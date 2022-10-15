@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,7 @@ Route::middleware(['auth:sanctum', 'IsAPIAdmin'])->group(function () {
     });
 
     // Category
+    Route::get('view-category', [CategoryController::class, 'index']);
     Route::post('store-category', [CategoryController::class, 'store']);
 });
 

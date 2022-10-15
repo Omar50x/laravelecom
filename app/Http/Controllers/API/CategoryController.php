@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
+    public function index() {
+        $category = Category::all();
+        return response()->json([
+            'status' => 200,
+            'category' => $category,
+        ]);
+    }
+
     public function store(Request $request) {
         $validator = Validator::make($request->all(), [
             'meta_title' => 'required|max:191',
@@ -22,7 +30,7 @@ class CategoryController extends Controller
                 'errors' => $validator->messages(),
             ]);
         } else {
-            $category = new Category;
+            $category = new Category();
             $category->meta_title = $request->input('meta_title');
             $category->meta_keyword = $request->input('meta_keyword');
             $category->meta_descrip = $request->input('meta_descrip');
