@@ -117,9 +117,9 @@ class ProductController extends Controller
                 $product->selling_price = $request->input('selling_price');
                 $product->original_price = $request->input('original_price');
                 $product->qty = $request->input('qty');
-                $product->featured = $request->input('featured') == true ? '1':'0';
-                $product->popular = $request->input('popular') == true ? '1':'0';
-                $product->status = $request->input('status') == true ? '1':'0';
+                $product->featured = $request->input('featured');
+                $product->popular = $request->input('popular');
+                $product->status = $request->input('status');
 
                 if ($request->hasFile('image')) {
                     $path = $product->image;
